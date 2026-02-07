@@ -1,0 +1,22 @@
+# loguru==0.7.3
+# boto3==1.35.60
+filetype==1.2.0
+scipy==1.14.1
+imageio 
+imageio-ffmpeg
+#ffmpeg-python==0.2.0
+#opencv-python==4.10.0.84
+#cryptography
+#einops
+#uvicorn
+#bitblas
+#fastapi
+#pydantic
+#langdetect
+diffusers 
+kernels==0.11.5
+transformers==4.57.3
+#qwen-vl-utils[decord]==0.0.8
+torchao==0.13.0
+#optimum
+

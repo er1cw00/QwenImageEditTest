@@ -40,8 +40,8 @@ install_whl_from_url() {
     echo "-------------------------------------------------------"
 }
 
-pip install --no-cache-dir torch==2.8.0+cu128 torchvision==0.23.0+cu128 torchaudio==2.8.0+cu128 --index-url https://download.pytorch.org/whl/cu128
-pip install --no-cache-dir triton==3.4.0
+pip install torch==2.8.0+cu128 torchvision==0.23.0+cu128 torchaudio==2.8.0+cu128 --index-url https://download.pytorch.org/whl/cu128
+pip install triton==3.4.0
 
 echo "📥 安装 flash_attn v2.8.3"
 install_whl_from_url "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp312-cp312-linux_x86_64.whl"  "flash_attn-2.8.3+cu12torch2.8cxx11abiTRUE-cp312-cp312-linux_x86_64.whl"
@@ -50,5 +50,5 @@ install_whl_from_url "https://github.com/nunchaku-ai/nunchaku/releases/download/
 echo "📥 安装 gptqmodel v5.6.12"
 install_whl_from_url "https://github.com/ModelCloud/GPTQModel/releases/download/v5.6.12/gptqmodel-5.6.12+cu128torch2.8-cp312-cp312-linux_x86_64.whl" "gptqmodel-5.6.12+cu128torch2.8-cp312-cp312-linux_x86_64.whl"
 
-uv pip install --no-cache-dir -r requirements.txt --index-url "https://mirrors.aliyun.com/pypi/simple"
-uv pip install --no-cache-dir torchao==0.13.0 --index-url "https://mirrors.aliyun.com/pypi/simple/"
+pip install -r requirements.txt --index-url "https://mirrors.aliyun.com/pypi/simple"
+pip install torchao==0.13.0 --index-url "https://mirrors.aliyun.com/pypi/simple/"
