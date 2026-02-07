@@ -3,6 +3,7 @@
 
 export HF_ENDPOINT=https://hf-mirror.com
 
+
 # --- 安装依赖包 ---
 install_whl_from_url() {
     local url=$1
