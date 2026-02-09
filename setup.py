@@ -9,7 +9,7 @@ from kernels import get_kernel
 
 HF_TOKEN=''
 HF_ENDPOINT="https://hf-mirror.com"
-
+HF_HOME="/root/autodl-tmp/huggingface/"
 
 def try_login():
     api = HfApi()
@@ -55,6 +55,14 @@ def download_lightning_4step_lora():
     lighting_4step_path = hf_hub_download(repo_id=lighting_4step_repo, filename=lighting_4step_filename)
     return lighting_4step_path
     
+def download_qwen25_vl_7b_abliterated():
+    qwen_vl_repo = "huihui-ai/Qwen2.5-VL-7B-Instruct-abliterated"
+    print("下载 Qwen/Qwen-Image-Edit-2511")
+    cache_path = snapshot_download(
+        repo_id=qwen_vl_repo,
+    )
+    return cache_path
+    
 path = download_qwen_image_edit_2511()
 print(f'qwen_image_edit-2511: {path}')
 
@@ -63,3 +71,6 @@ print(f'lightning-4steps-lora: {path}')
 
 path = download_nunchaku_transformer()
 print(f'nunchaku transformer: {path}')
+
+path = download_qwen25_vl_7b_abliterated()
+print(f'qwen25_vl_7b_abliterated: {path}')
