@@ -12,6 +12,7 @@ from PIL import Image
 from huggingface_hub import hf_hub_download
 from diffusers import QwenImageEditPlusPipeline
 from diffusers.utils import load_image
+from transformers import Qwen2_5_VLForConditionalGeneration
 
 from nunchaku import NunchakuQwenImageTransformer2DModel
 from nunchaku.utils import get_precision
@@ -69,8 +70,11 @@ lighting_4step_filename = "Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safet
 lighting_4step_path = hf_hub_download(repo_id=lighting_4step_repo, filename=lighting_4step_filename)
 load_nunchaku_lora(transformer, lighting_4step_path, strength=1.0)
 
+qwen_vl_repo = "huihui-ai/Qwen2.5-VL-7B-Instruct-abliterated"
+text_encoder = Qwen2_5_VLForConditionalGeneration.from_pretrained(qwen_vl_repo, dtype=torch_dtype, device_map="auto")
+
 qwen_repo = "Qwen/Qwen-Image-Edit-2511"
-pipeline = QwenImageEditPlusPipeline.from_pretrained(qwen_repo, transformer=transformer, torch_dtype=torch_dtype)
+pipeline = QwenImageEditPlusPipeline.from_pretrained(qwen_repo, text_encoder=text_encoder, transformer=transformer, torch_dtype=torch_dtype)
 
 transformer.set_offload(True, use_pin_memory=False, num_blocks_on_gpu=32) # increase num_blocks_on_gpu if you have more VRAM
 pipeline._exclude_from_cpu_offload.append("transformer")
