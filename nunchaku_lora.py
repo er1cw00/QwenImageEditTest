@@ -2,7 +2,7 @@
 Nunchaku LoRA loader for QwenImage transformers.
 Based on ComfyUI-QwenImageLoraLoader implementation.
 """
-
+# https://www.reddit.com/r/comfyui/comments/1osrz2p/face_swaping_using_qwen_edit_2509_combined_qwen/
 import torch
 import torch.nn as nn
 from safetensors.torch import load_file
