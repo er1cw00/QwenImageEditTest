@@ -2,8 +2,8 @@ import torch
 from diffusers import WanTransformer3DModel
 from transformers import BitsAndBytesConfig
 
-model_id = "lmagespace/Wan2.2-I2V-A14B-Lightning-Diffusers"
-save_path = "./wan22_transformer_nf4"
+model_id = "magespace/Wan2.2-I2V-A14B-Lightning-Diffusers"
+save_path = "./transformer_2"
 
 # 1. 配置量化参数
 bnb_config = BitsAndBytesConfig(
@@ -18,7 +18,7 @@ bnb_config = BitsAndBytesConfig(
 print("正在加载并量化 Transformer...")
 transformer = WanTransformer3DModel.from_pretrained(
     model_id,
-    subfolder="transformer",
+    subfolder="transformer_2",
     quantization_config=bnb_config,
     torch_dtype=torch.bfloat16,
     device_map="auto"
@@ -28,5 +28,3 @@ transformer = WanTransformer3DModel.from_pretrained(
 print(f"正在保存至 {save_path}...")
 transformer.save_pretrained(save_path)
 print("保存完成！")
-print(f"上传至 shizuka2000/wan2.2-i2v-14b-nf4 ...")
-transformer.push_to_hub("shizuka2000/wan2.2-i2v-14b-nf4")
